@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      fetch("http://api.openweathermap.org/data/2.5/weather?q=Meghraj&APPID=3498cae6b7df44ff7956255f3030fe6d").then((res)=>{
+            return res.json()
+        }).then((data)=>{
+            console.log(data)
+            Display(data)
+        })
+
+        function Display(data){
+            var div=document.createElement("div")
+
+            var title=document.createElement("h2")
+            title.innerHTML="WEATHER API"
+            var name=document.createElement("p")
+            name.innerHTML="name:"+data.name
+           var temp=document.createElement("p")
+            temp.innerHTML="temp:"+data.main.temp
+           var timezone=document.createElement("p")
+            timezone.innerHTML= "timezone:"+data.timezone
+           var visibility=document.createElement("p")
+            visibility.innerHTML=" visibility:"+data.visibility    
+           var country=document.createElement("p")
+            country.innerHTML="country:"+data.sys.country   
+
+        div.append(title,name,temp,timezone,visibility,country)
+            document.querySelector("body").append(div)
+        }
+    </script>
+</body>
+</html>
